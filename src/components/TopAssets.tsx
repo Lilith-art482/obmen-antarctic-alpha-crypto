@@ -5,6 +5,8 @@ import { SUPPORTED_TOKENS } from '@/types';
 import { useTheme, LANG } from '@/hooks/useTheme';
 import { FiTrendingUp, FiTrendingDown, FiMinus } from 'react-icons/fi';
 
+const ASSETS_TO_SHOW = SUPPORTED_TOKENS.filter(t => t.symbol !== 'USDT' && t.symbol !== 'USDC');
+
 export function TopAssets() {
   const { prices } = usePrices();
   const { language } = useTheme();
@@ -15,7 +17,7 @@ export function TopAssets() {
       <h3 className="text-lg font-bold text-white mb-4">{t.all_assets}</h3>
       <div className="glass rounded-2xl overflow-hidden">
         <div className="divide-y divide-white/5">
-          {SUPPORTED_TOKENS.map((token, i) => {
+          {ASSETS_TO_SHOW.map((token, i) => {
             const p = prices[token.symbol];
             return (
               <motion.div
