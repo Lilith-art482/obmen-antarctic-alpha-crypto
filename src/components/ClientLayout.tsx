@@ -1,7 +1,6 @@
 'use client';
 import { Navigation } from './Navigation';
 import { ToastProvider } from './ToastProvider';
-import { PinSetupModal } from './PinSetupModal';
 import { ErrorBoundary } from './ErrorBoundary';
 import { useWallet } from '@/hooks/useWallet';
 
@@ -21,21 +20,20 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           <Navigation />
         </aside>
 
-        <main className="flex-1 p-4 lg:p-8 pb-24 lg:pb-8 max-w-7xl mx-auto w-full">
+        <main className="flex-1 p-4 lg:p-8 pb-24 lg:pb-8 max-w-7xl mx-auto w-full flex flex-col">
           <ErrorBoundary>
-            {loading ? (
-              <div className="flex items-center justify-center h-64">
+            <div className="flex-1 flex flex-col items-center justify-center">
+              {loading ? (
                 <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-              </div>
-            ) : (
-              children
-            )}
+              ) : (
+                children
+              )}
+            </div>
           </ErrorBoundary>
         </main>
       </div>
 
       <ToastProvider />
-      <PinSetupModal />
     </div>
   );
 }

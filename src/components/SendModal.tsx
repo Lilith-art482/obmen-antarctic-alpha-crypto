@@ -14,17 +14,14 @@ interface Props {
 export function SendModal({ open, onClose, onSend, balance }: Props) {
   const [address, setAddress] = useState('');
   const [amount, setAmount] = useState('');
-  const [pin, setPin] = useState('');
 
   const handleSend = () => {
     if (!address || !amount) { toast.error('Заполните все поля'); return; }
     if (parseFloat(amount) > balance) { toast.error('Недостаточно средств'); return; }
-    if (!pin || pin.length !== 4) { toast.error('Введите PIN-код (4 цифры)'); return; }
     onSend(address, parseFloat(amount));
     toast.success('Транзакция отправлена (симуляция)');
     setAddress('');
     setAmount('');
-    setPin('');
     onClose();
   };
 
@@ -71,17 +68,6 @@ export function SendModal({ open, onClose, onSend, balance }: Props) {
                   />
                   <span className="absolute right-4 top-3 text-gray-400 text-sm">Баланс: {balance.toFixed(4)}</span>
                 </div>
-              </div>
-              <div>
-                <label className="text-sm text-gray-400 mb-1 block">PIN-код (4 цифры)</label>
-                <input
-                  type="password"
-                  maxLength={4}
-                  value={pin}
-                  onChange={e => setPin(e.target.value.replace(/\D/g, ''))}
-                  className="w-full bg-white/10 text-white rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500 text-center text-2xl tracking-widest"
-                  placeholder="****"
-                />
               </div>
               <motion.button
                 whileHover={{ scale: 1.02 }}

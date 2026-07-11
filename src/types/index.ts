@@ -42,8 +42,6 @@ export interface Transaction {
 
 export interface WalletData {
   addresses: Record<NetworkType, string>;
-  mnemonic?: string;
-  pin?: string;
   uid: string;
   createdAt: number;
 }
