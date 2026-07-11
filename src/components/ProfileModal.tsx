@@ -47,7 +47,7 @@ export function ProfileModal({ open, onClose }: Props) {
                 <div key={network} className="bg-white/5 p-3 rounded-xl">
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-xs text-gray-400 uppercase">{network}</span>
-                    <button onClick={() => copyAddress(address)} className="text-gray-400 hover:text-indigo-400 transition-colors">
+                    <button onClick={() => copyAddress(address)} className="text-gray-400 hover:text-accent transition-colors">
                       <FiCopy size={14} />
                     </button>
                   </div>

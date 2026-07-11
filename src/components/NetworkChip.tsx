@@ -11,7 +11,7 @@ export function NetworkChip({ active, onClick, label }: Props) {
       onClick={onClick}
       className={`text-xs px-3 py-1.5 rounded-full font-medium transition-all ${
         active
-          ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/30'
+          ? 'bg-accent text-white shadow-lg shadow-accent/30'
           : 'bg-white/5 text-gray-400 hover:bg-white/10'
       }`}
     >

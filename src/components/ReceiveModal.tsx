@@ -44,7 +44,7 @@ export function ReceiveModal({ open, onClose, network, address }: Props) {
               <QRCodeSVG value={address} size={200} />
             </div>
             <p className="text-xs text-gray-400 mb-2 break-all bg-white/5 p-3 rounded-lg">{address}</p>
-            <button onClick={copy} className="text-indigo-400 hover:text-indigo-300 text-sm flex items-center gap-1 mx-auto">
+            <button onClick={copy} className="text-accent hover:text-accent-lighter text-sm flex items-center gap-1 mx-auto">
               <FiCopy /> Копировать адрес
             </button>
           </motion.div>

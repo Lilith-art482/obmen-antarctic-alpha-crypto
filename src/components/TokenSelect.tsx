@@ -33,7 +33,7 @@ export function TokenSelect({ token, onSelect }: Props) {
                 key={t.symbol}
                 onClick={() => { onSelect(t); setOpen(false); }}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-                  token.symbol === t.symbol ? 'bg-indigo-600/30 text-white' : 'text-gray-300 hover:bg-white/10'
+                  token.symbol === t.symbol ? 'bg-accent/30 text-white' : 'text-gray-300 hover:bg-white/10'
                 }`}
               >
                 <span className="text-lg">{t.icon}</span>

@@ -58,7 +58,7 @@ export function TopAssets() {
                   </div>
                 ) : (
                   <div className="w-16 flex justify-center">
-                    <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+                    <div className="w-4 h-4 loader-accent rounded-full animate-spin" />
                   </div>
                 )}
                 <FiExternalLink size={14} className="text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />

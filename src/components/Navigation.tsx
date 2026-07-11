@@ -42,7 +42,7 @@ export function Navigation({ onOpenProfile, onOpenSettings }: Props) {
     <nav className="glass fixed bottom-0 left-0 right-0 z-40 lg:relative lg:glass lg:rounded-2xl lg:p-0 lg:h-full lg:flex lg:flex-col">
       {/* Logo */}
       <div className="hidden lg:flex items-center gap-3 px-5 py-5 border-b border-white/5">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center text-white font-bold text-sm">
           C
         </div>
         <span className="text-white font-bold text-lg">CryptoSwap</span>
@@ -58,18 +58,18 @@ export function Navigation({ onOpenProfile, onOpenSettings }: Props) {
           const Icon = item.icon;
           return (
             <Link key={item.href} href={item.href} className={`relative flex flex-col lg:flex-row items-center gap-1 lg:gap-3 px-3 lg:px-4 py-2 lg:py-2.5 rounded-xl transition-all w-full group ${
-              active ? 'text-indigo-400' : 'text-gray-500 hover:text-gray-300'
+              active ? 'text-accent' : 'text-gray-500 hover:text-gray-300'
             }`}>
               {active && (
-                <motion.div layoutId="nav-bg" className="absolute inset-0 bg-indigo-600/15 rounded-xl border border-indigo-500/20" />
+                <motion.div layoutId="nav-bg" className="absolute inset-0 bg-accent/15 rounded-xl border border-accent/20" />
               )}
               <div className={`relative z-10 p-1.5 rounded-lg transition-colors ${
-                active ? 'bg-indigo-600/20 text-indigo-400' : 'text-gray-500 group-hover:text-gray-300'
+                active ? 'bg-accent/20 text-accent' : 'text-gray-500 group-hover:text-gray-300'
               }`}>
                 <Icon size={18} />
               </div>
               <span className={`relative z-10 text-[11px] lg:text-sm font-medium ${
-                active ? 'text-indigo-400' : 'text-gray-500 group-hover:text-gray-300'
+                active ? 'text-accent' : 'text-gray-500 group-hover:text-gray-300'
               }`}>
                 {item.labelKey === 'exchange' ? t.exchange : item.labelKey === 'wallet' ? t.wallet : t.history}
               </span>

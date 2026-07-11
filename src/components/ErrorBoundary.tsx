@@ -12,7 +12,7 @@ export class ErrorBoundary extends Component<Props, State> {
       return this.props.fallback || (
         <div className="glass p-6 rounded-xl text-center">
           <p className="text-red-400 mb-2">Что-то пошло не так</p>
-          <button onClick={() => this.setState({ hasError: false, error: null })} className="text-indigo-400 hover:text-indigo-300">
+          <button onClick={() => this.setState({ hasError: false, error: null })} className="text-accent hover:text-accent-lighter">
             Попробовать снова
           </button>
         </div>

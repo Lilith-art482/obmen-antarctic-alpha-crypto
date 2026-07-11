@@ -2,7 +2,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiSun, FiMoon } from 'react-icons/fi';
 import { useTheme, LANG } from '@/hooks/useTheme';
-import type { LanguageType } from '@/types';
+import type { LanguageType, ColorSchemeType } from '@/types';
 
 interface Props {
   open: boolean;
@@ -15,8 +15,17 @@ const LANGUAGES: { code: LanguageType; label: string }[] = [
   { code: 'zh', label: '中文' },
 ];
 
+const COLOR_SCHEMES: { code: ColorSchemeType; color: string }[] = [
+  { code: 'purple', color: '#6366f1' },
+  { code: 'green', color: '#10b981' },
+  { code: 'blue', color: '#3b82f6' },
+  { code: 'yellow', color: '#f59e0b' },
+  { code: 'red', color: '#f43f5e' },
+  { code: 'teal', color: '#14b8a6' },
+];
+
 export function SettingsModal({ open, onClose }: Props) {
-  const { theme, language, setTheme, setLanguage } = useTheme();
+  const { theme, language, colorScheme, setTheme, setLanguage, setColorScheme } = useTheme();
   const t = LANG[language];
 
   return (
@@ -48,7 +57,7 @@ export function SettingsModal({ open, onClose }: Props) {
                   <button
                     onClick={() => setTheme('dark')}
                     className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-medium transition-all ${
-                      theme === 'dark' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/30' : 'bg-white/10 text-gray-300 hover:bg-white/15'
+                      theme === 'dark' ? 'bg-accent text-white shadow-lg shadow-accent/30' : 'bg-white/10 text-gray-300 hover:bg-white/15'
                     }`}
                   >
                     <FiMoon size={18} />
@@ -57,7 +66,7 @@ export function SettingsModal({ open, onClose }: Props) {
                   <button
                     onClick={() => setTheme('light')}
                     className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-medium transition-all ${
-                      theme === 'light' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/30' : 'bg-white/10 text-gray-300 hover:bg-white/15'
+                      theme === 'light' ? 'bg-accent text-white shadow-lg shadow-accent/30' : 'bg-white/10 text-gray-300 hover:bg-white/15'
                     }`}
                   >
                     <FiSun size={18} />
@@ -67,9 +76,19 @@ export function SettingsModal({ open, onClose }: Props) {
               </div>
 
               <div>
-                <label className="text-sm text-gray-400 mb-3 block">{t.color_scheme}</label>
-                <div className="bg-white/10 rounded-xl p-4 text-center text-gray-500 text-sm italic">
-                  {t.coming_soon}
+                <label className="text-sm text-gray-400 mb-3 block">{t.accent_color}</label>
+                <div className="flex gap-3 flex-wrap justify-center">
+                  {COLOR_SCHEMES.map(s => (
+                    <button
+                      key={s.code}
+                      onClick={() => setColorScheme(s.code)}
+                      className={`w-10 h-10 rounded-full transition-all ${
+                        colorScheme === s.code ? 'ring-2 ring-white scale-110' : 'ring-1 ring-white/20 hover:scale-105'
+                      }`}
+                      style={{ backgroundColor: s.color }}
+                      title={s.code}
+                    />
+                  ))}
                 </div>
               </div>
 
@@ -81,7 +100,7 @@ export function SettingsModal({ open, onClose }: Props) {
                       key={l.code}
                       onClick={() => setLanguage(l.code)}
                       className={`flex-1 py-3 rounded-xl font-medium text-sm transition-all ${
-                        language === l.code ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/30' : 'bg-white/10 text-gray-300 hover:bg-white/15'
+                        language === l.code ? 'bg-accent text-white shadow-lg shadow-accent/30' : 'bg-white/10 text-gray-300 hover:bg-white/15'
                       }`}
                     >
                       {l.label}

@@ -95,7 +95,7 @@ export function SwapWidget() {
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm text-gray-400">Вы отдаете</span>
             <span className="text-xs text-gray-500">
-              Баланс: <span className="text-indigo-400">{fromBalance.toFixed(4)}</span>
+              Баланс: <span className="text-accent">{fromBalance.toFixed(4)}</span>
             </span>
           </div>
           <div className="flex items-center gap-3">
@@ -122,7 +122,7 @@ export function SwapWidget() {
             whileHover={{ scale: 1.1, rotate: 180 }}
             whileTap={{ scale: 0.9 }}
             onClick={handleSwap}
-            className="bg-indigo-600 p-3 rounded-full shadow-lg shadow-indigo-500/30"
+            className="bg-accent p-3 rounded-full shadow-lg shadow-accent/30"
           >
             <FiArrowDown className="text-white text-lg" />
           </motion.button>
@@ -132,7 +132,7 @@ export function SwapWidget() {
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm text-gray-400">Вы получаете</span>
             <span className="text-xs text-gray-500">
-              Баланс: <span className="text-indigo-400">{toBalance.toFixed(4)}</span>
+              Баланс: <span className="text-accent">{toBalance.toFixed(4)}</span>
             </span>
           </div>
           <div className="flex items-center gap-3">
@@ -161,7 +161,7 @@ export function SwapWidget() {
           </div>
           <div className="flex justify-between">
             <span>Комиссия сети</span>
-            <span className="text-indigo-400">{networkFee} {fromToken.symbol}</span>
+            <span className="text-accent">{networkFee} {fromToken.symbol}</span>
           </div>
         </div>
 
@@ -170,7 +170,7 @@ export function SwapWidget() {
           whileTap={{ scale: 0.98 }}
           onClick={executeSwap}
           disabled={!fromAmount || swapping}
-          className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-lg shadow-indigo-500/25"
+          className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-accent to-accent-dark hover:from-accent hover:to-accent-dark disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-lg shadow-accent/25"
         >
           {swapping ? 'Обмен...' : 'Обменять'}
         </motion.button>

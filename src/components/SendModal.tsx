@@ -52,7 +52,7 @@ export function SendModal({ open, onClose, onSend, balance }: Props) {
                 <input
                   value={address}
                   onChange={e => setAddress(e.target.value)}
-                  className="w-full bg-white/10 text-white rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full bg-white/10 text-white rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-accent"
                   placeholder="0x..."
                 />
               </div>
@@ -63,7 +63,7 @@ export function SendModal({ open, onClose, onSend, balance }: Props) {
                     type="number"
                     value={amount}
                     onChange={e => setAmount(e.target.value)}
-                    className="w-full bg-white/10 text-white rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full bg-white/10 text-white rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-accent"
                     placeholder="0.00"
                   />
                   <span className="absolute right-4 top-3 text-gray-400 text-sm">Баланс: {balance.toFixed(4)}</span>
@@ -73,7 +73,7 @@ export function SendModal({ open, onClose, onSend, balance }: Props) {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleSend}
-                className="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600"
+                className="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-accent to-accent-dark"
               >
                 Отправить
               </motion.button>

@@ -8,7 +8,7 @@ import { NETWORKS, SUPPORTED_TOKENS } from '@/types';
 import ClientLayout from '@/components/ClientLayout';
 
 const TYPE_CONFIG: Record<string, { icon: React.ComponentType<{size?: number; className?: string}>; label: string; color: string; bg: string }> = {
-  swap: { icon: FiRefreshCw, label: 'Обмен', color: 'text-indigo-400', bg: 'bg-indigo-500/15' },
+  swap: { icon: FiRefreshCw, label: 'Обмен', color: 'text-accent', bg: 'bg-accent/15' },
   send: { icon: FiSend, label: 'Отправка', color: 'text-orange-400', bg: 'bg-orange-500/15' },
   receive: { icon: FiDownload, label: 'Получение', color: 'text-green-400', bg: 'bg-green-500/15' },
 };
@@ -55,7 +55,7 @@ export default function HistoryPage() {
       <div className="w-full max-w-4xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold text-white">История</h1>
-          <button onClick={load} className="text-gray-500 hover:text-indigo-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+          <button onClick={load} className="text-gray-500 hover:text-accent transition-colors p-2 rounded-lg hover:bg-white/5">
             <FiRefreshCw size={18} className={loading ? 'animate-spin' : ''} />
           </button>
         </div>
@@ -67,13 +67,13 @@ export default function HistoryPage() {
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder="Поиск по хэшу..."
-              className="w-full bg-white/5 text-white rounded-xl pl-10 pr-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500/50 focus:bg-white/10 transition-all text-sm"
+              className="w-full bg-white/5 text-white rounded-xl pl-10 pr-4 py-3 outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 transition-all text-sm"
             />
           </div>
           <select
             value={filterType}
             onChange={e => setFilterType(e.target.value)}
-            className="bg-white/5 text-white rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500/50 text-sm appearance-none cursor-pointer min-w-[130px]"
+            className="bg-white/5 text-white rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-accent/50 text-sm appearance-none cursor-pointer min-w-[130px]"
           >
             <option value="">Все типы</option>
             <option value="swap">Обмен</option>
@@ -83,7 +83,7 @@ export default function HistoryPage() {
           <select
             value={filterToken}
             onChange={e => setFilterToken(e.target.value)}
-            className="bg-white/5 text-white rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500/50 text-sm appearance-none cursor-pointer min-w-[130px]"
+            className="bg-white/5 text-white rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-accent/50 text-sm appearance-none cursor-pointer min-w-[130px]"
           >
             <option value="">Все монеты</option>
             {SUPPORTED_TOKENS.map(t => <option key={t.symbol} value={t.symbol}>{t.symbol}</option>)}
@@ -176,7 +176,7 @@ export default function HistoryPage() {
                             href={`${networkInfo?.explorer || '#'}${tx.txHash}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1 text-indigo-400 hover:text-indigo-300 transition-colors"
+                            className="flex items-center gap-1 text-accent hover:text-accent-lighter transition-colors"
                           >
                             {tx.txHash.slice(0, 8)}...{tx.txHash.slice(-4)}
                             <FiExternalLink size={11} />
@@ -196,7 +196,7 @@ export default function HistoryPage() {
 
         {filtered.length > 10 && (
           <div className="text-center pt-2">
-            <button onClick={() => load()} className="text-indigo-400 hover:text-indigo-300 text-sm font-medium transition-colors">
+            <button onClick={() => load()} className="text-accent hover:text-accent-lighter text-sm font-medium transition-colors">
               Загрузить еще
             </button>
           </div>

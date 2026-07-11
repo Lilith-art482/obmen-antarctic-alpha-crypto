@@ -61,19 +61,19 @@ export function WalletTile({ network, address, balances, onSend, onReceive }: Pr
 
       <div className="flex items-center gap-2 mb-4">
         <p className="text-xs text-gray-500 truncate flex-1">{address.slice(0, 10)}...{address.slice(-6)}</p>
-        <button onClick={copyAddress} className="text-indigo-400 hover:text-indigo-300">
+        <button onClick={copyAddress} className="text-accent hover:text-accent-lighter">
           <FiCopy size={14} />
         </button>
-        <a href={`${net.explorer}${address}`} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300">
+        <a href={`${net.explorer}${address}`} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent-lighter">
           <FiExternalLink size={14} />
         </a>
       </div>
 
       <div className="flex gap-2">
-        <button onClick={onReceive} className="flex-1 py-2 rounded-lg bg-indigo-600/30 text-indigo-300 text-sm font-medium hover:bg-indigo-600/50 transition-colors">
+        <button onClick={onReceive} className="flex-1 py-2 rounded-lg bg-accent/30 text-accent-lighter text-sm font-medium hover:bg-accent/50 transition-colors">
           Пополнить
         </button>
-        <button onClick={onSend} className="flex-1 py-2 rounded-lg bg-purple-600/30 text-purple-300 text-sm font-medium hover:bg-purple-600/50 transition-colors">
+        <button onClick={onSend} className="flex-1 py-2 rounded-lg bg-accent/30 text-accent-lighter text-sm font-medium hover:bg-accent/50 transition-colors">
           Отправить
         </button>
       </div>

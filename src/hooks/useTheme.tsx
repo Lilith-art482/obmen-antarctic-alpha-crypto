@@ -1,30 +1,37 @@
 'use client';
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react';
-import type { ThemeType, LanguageType } from '@/types';
+import type { ThemeType, LanguageType, ColorSchemeType } from '@/types';
 
 interface ThemeContextType {
   theme: ThemeType;
   language: LanguageType;
+  colorScheme: ColorSchemeType;
   setTheme: (t: ThemeType) => void;
   setLanguage: (l: LanguageType) => void;
+  setColorScheme: (c: ColorSchemeType) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: 'dark',
   language: 'ru',
+  colorScheme: 'purple',
   setTheme: () => {},
   setLanguage: () => {},
+  setColorScheme: () => {},
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<ThemeType>('dark');
   const [language, setLanguageState] = useState<LanguageType>('ru');
+  const [colorScheme, setColorSchemeState] = useState<ColorSchemeType>('purple');
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as ThemeType | null;
     const savedLang = localStorage.getItem('language') as LanguageType | null;
+    const savedColor = localStorage.getItem('colorScheme') as ColorSchemeType | null;
     if (savedTheme) setThemeState(savedTheme);
     if (savedLang) setLanguageState(savedLang);
+    if (savedColor) setColorSchemeState(savedColor);
   }, []);
 
   useEffect(() => {
@@ -32,14 +39,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-accent', colorScheme);
+    localStorage.setItem('colorScheme', colorScheme);
+  }, [colorScheme]);
+
   const setTheme = useCallback((t: ThemeType) => setThemeState(t), []);
   const setLanguage = useCallback((l: LanguageType) => {
     setLanguageState(l);
     localStorage.setItem('language', l);
   }, []);
+  const setColorScheme = useCallback((c: ColorSchemeType) => setColorSchemeState(c), []);
 
   return (
-    <ThemeContext.Provider value={{ theme, language, setTheme, setLanguage }}>
+    <ThemeContext.Provider value={{ theme, language, colorScheme, setTheme, setLanguage, setColorScheme }}>
       {children}
     </ThemeContext.Provider>
   );
@@ -77,6 +90,7 @@ export const LANG: Record<LanguageType, Record<string, string>> = {
     settings_title: 'Настройки',
     color_scheme: 'Цветовая гамма',
     coming_soon: 'Скоро',
+    accent_color: 'Цвет акцента',
   },
   en: {
     exchange: 'Exchange',
@@ -105,6 +119,7 @@ export const LANG: Record<LanguageType, Record<string, string>> = {
     settings_title: 'Settings',
     color_scheme: 'Color Scheme',
     coming_soon: 'Coming Soon',
+    accent_color: 'Accent Color',
   },
   zh: {
     exchange: '交换',
@@ -133,5 +148,6 @@ export const LANG: Record<LanguageType, Record<string, string>> = {
     settings_title: '设置',
     color_scheme: '配色方案',
     coming_soon: '即将推出',
+    accent_color: '强调色',
   },
 };

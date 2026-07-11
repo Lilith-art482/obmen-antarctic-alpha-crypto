@@ -10,6 +10,7 @@ export interface TokenInfo {
 export type NetworkType = 'ethereum' | 'solana' | 'ton' | 'tron' | 'bsc';
 export type ThemeType = 'dark' | 'light';
 export type LanguageType = 'ru' | 'en' | 'zh';
+export type ColorSchemeType = 'purple' | 'green' | 'blue' | 'yellow' | 'red' | 'teal';
 
 export interface NetworkInfo {
   id: NetworkType;
