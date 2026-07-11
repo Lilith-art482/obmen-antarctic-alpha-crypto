@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { ethers } from 'ethers';
 import type { WalletData, NetworkType } from '@/types';
@@ -39,9 +39,15 @@ export function useWallet() {
     setLoading(false);
   }, []);
 
+  const clearWallet = useCallback(() => {
+    sessionStorage.removeItem(WALLET_KEY);
+    setWallet(null);
+  }, []);
+
   return {
     wallet,
     loading,
+    clearWallet,
     getAddress: (network: NetworkType) => wallet?.addresses[network] || '',
   };
 }

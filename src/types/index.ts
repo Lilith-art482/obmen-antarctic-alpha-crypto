@@ -8,6 +8,8 @@ export interface TokenInfo {
 }
 
 export type NetworkType = 'ethereum' | 'solana' | 'ton' | 'tron' | 'bsc';
+export type ThemeType = 'dark' | 'light';
+export type LanguageType = 'ru' | 'en' | 'zh';
 
 export interface NetworkInfo {
   id: NetworkType;
@@ -66,7 +68,7 @@ export const SUPPORTED_TOKENS: TokenInfo[] = [
   { symbol: 'USDT', name: 'Tether', icon: '₮', networks: ['ethereum', 'solana', 'ton', 'tron'], decimals: 6 },
   { symbol: 'USDC', name: 'USD Coin', icon: '○', networks: ['ethereum', 'solana'], decimals: 6 },
   { symbol: 'SOL', name: 'Solana', icon: '◎', networks: ['solana'], decimals: 9 },
-  { symbol: 'TON', name: 'Toncoin', icon: '⬡', networks: ['ton'], decimals: 9 },
+  { symbol: 'GRAM', name: 'GRAM', icon: '⬡', networks: ['ton'], decimals: 9 },
   { symbol: 'TRX', name: 'Tron', icon: '◈', networks: ['tron'], decimals: 6 },
   { symbol: 'BNB', name: 'BNB', icon: '◆', networks: ['bsc'], decimals: 18 },
 ];

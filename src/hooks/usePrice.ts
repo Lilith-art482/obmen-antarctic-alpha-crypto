@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import type { PriceData } from '@/types';
 
 const WS_URL = 'wss://stream.binance.com:9443/ws';
-const STREAMS = ['ethusdt', 'bnbusdt', 'solusdt', 'trxusdt', 'tonusdt'];
+const STREAMS = ['ethusdt', 'bnbusdt', 'solusdt', 'trxusdt', 'gramusdt'];
 
 export function usePrices() {
   const [prices, setPrices] = useState<Record<string, PriceData>>({});
