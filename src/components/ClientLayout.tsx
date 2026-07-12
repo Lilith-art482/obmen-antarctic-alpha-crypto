@@ -5,6 +5,7 @@ import { ToastProvider } from './ToastProvider';
 import { ErrorBoundary } from './ErrorBoundary';
 import { ProfileModal } from './ProfileModal';
 import { SettingsModal } from './SettingsModal';
+import { ColorPickerModal } from './ColorPickerModal';
 import { ThemeProvider } from '@/hooks/useTheme';
 import { useWallet } from '@/hooks/useWallet';
 
@@ -12,14 +13,15 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
   const { loading } = useWallet();
   const [profileOpen, setProfileOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [colorPickerOpen, setColorPickerOpen] = useState(false);
 
   return (
     <>
       <div className="min-h-screen bg-[#0a0a1a] text-white relative overflow-hidden">
         <div className="fixed inset-0 pointer-events-none">
-          <div className="absolute top-[-200px] left-[-100px] w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px]" />
-          <div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px]" />
+          <div className="absolute top-[-200px] left-[-100px] w-[500px] h-[500px] bg-white/[0.03] rounded-full blur-[120px]" />
+          <div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] bg-white/[0.03] rounded-full blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-white/[0.02] rounded-full blur-[100px]" />
         </div>
 
         <div className="relative z-10 flex flex-col lg:flex-row min-h-screen">
@@ -44,7 +46,8 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
       </div>
 
       <ProfileModal open={profileOpen} onClose={() => setProfileOpen(false)} />
-      <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} />
+      <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} onOpenColorPicker={() => { setSettingsOpen(false); setColorPickerOpen(true); }} />
+      <ColorPickerModal open={colorPickerOpen} onClose={() => setColorPickerOpen(false)} />
     </>
   );
 }

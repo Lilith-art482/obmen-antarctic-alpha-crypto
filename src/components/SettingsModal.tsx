@@ -1,12 +1,13 @@
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiX, FiSun, FiMoon } from 'react-icons/fi';
+import { FiX, FiSun, FiMoon, FiGrid } from 'react-icons/fi';
 import { useTheme, LANG } from '@/hooks/useTheme';
-import type { LanguageType, ColorSchemeType } from '@/types';
+import type { LanguageType } from '@/types';
 
 interface Props {
   open: boolean;
   onClose: () => void;
+  onOpenColorPicker: () => void;
 }
 
 const LANGUAGES: { code: LanguageType; label: string }[] = [
@@ -15,17 +16,8 @@ const LANGUAGES: { code: LanguageType; label: string }[] = [
   { code: 'zh', label: '中文' },
 ];
 
-const COLOR_SCHEMES: { code: ColorSchemeType; color: string }[] = [
-  { code: 'purple', color: '#6366f1' },
-  { code: 'green', color: '#10b981' },
-  { code: 'blue', color: '#3b82f6' },
-  { code: 'yellow', color: '#f59e0b' },
-  { code: 'red', color: '#f43f5e' },
-  { code: 'teal', color: '#14b8a6' },
-];
-
-export function SettingsModal({ open, onClose }: Props) {
-  const { theme, language, colorScheme, setTheme, setLanguage, setColorScheme } = useTheme();
+export function SettingsModal({ open, onClose, onOpenColorPicker }: Props) {
+  const { theme, language, setTheme, setLanguage } = useTheme();
   const t = LANG[language];
 
   return (
@@ -77,19 +69,13 @@ export function SettingsModal({ open, onClose }: Props) {
 
               <div>
                 <label className="text-sm text-gray-400 mb-3 block">{t.accent_color}</label>
-                <div className="flex gap-3 flex-wrap justify-center">
-                  {COLOR_SCHEMES.map(s => (
-                    <button
-                      key={s.code}
-                      onClick={() => setColorScheme(s.code)}
-                      className={`w-10 h-10 rounded-full transition-all ${
-                        colorScheme === s.code ? 'ring-2 ring-white scale-110' : 'ring-1 ring-white/20 hover:scale-105'
-                      }`}
-                      style={{ backgroundColor: s.color }}
-                      title={s.code}
-                    />
-                  ))}
-                </div>
+                <button
+                  onClick={onOpenColorPicker}
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-accent text-white hover:opacity-90 transition-all text-sm font-medium shadow-lg shadow-accent/30"
+                >
+                  <FiGrid size={16} />
+                  {language === 'ru' ? 'Настройка гаммы' : language === 'en' ? 'Color Palette' : '调色板'}
+                </button>
               </div>
 
               <div>

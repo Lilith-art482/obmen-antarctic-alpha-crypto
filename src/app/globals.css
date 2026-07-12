@@ -57,6 +57,78 @@
   --accent-lighter: 94, 234, 212;
   --accent-grad-to: 8, 145, 178;
 }
+:root[data-accent="lavender"] {
+  --accent: 167, 139, 250;
+  --accent-light: 91, 33, 182;
+  --accent-lighter: 196, 132, 252;
+  --accent-grad-to: 139, 92, 246;
+}
+:root[data-accent="spruce"] {
+  --accent: 6, 95, 70;
+  --accent-light: 52, 211, 153;
+  --accent-lighter: 110, 231, 183;
+  --accent-grad-to: 8, 145, 178;
+}
+:root[data-accent="sky"] {
+  --accent: 125, 211, 252;
+  --accent-light: 3, 105, 161;
+  --accent-lighter: 186, 230, 253;
+  --accent-grad-to: 14, 165, 233;
+}
+:root[data-accent="mint"] {
+  --accent: 110, 231, 183;
+  --accent-light: 5, 150, 105;
+  --accent-lighter: 167, 243, 208;
+  --accent-grad-to: 20, 184, 166;
+}
+:root[data-accent="vanilla"] {
+  --accent: 245, 230, 202;
+  --accent-light: 146, 114, 10;
+  --accent-lighter: 254, 243, 199;
+  --accent-grad-to: 251, 191, 36;
+}
+:root[data-accent="lemon"] {
+  --accent: 254, 240, 138;
+  --accent-light: 133, 118, 10;
+  --accent-lighter: 254, 249, 195;
+  --accent-grad-to: 250, 204, 21;
+}
+:root[data-accent="lilac"] {
+  --accent: 196, 132, 252;
+  --accent-light: 107, 33, 168;
+  --accent-lighter: 216, 180, 254;
+  --accent-grad-to: 168, 85, 247;
+}
+:root[data-accent="sage"] {
+  --accent: 134, 239, 172;
+  --accent-light: 5, 150, 105;
+  --accent-lighter: 167, 243, 208;
+  --accent-grad-to: 52, 211, 153;
+}
+:root[data-accent="pistachio"] {
+  --accent: 167, 243, 208;
+  --accent-light: 5, 150, 105;
+  --accent-lighter: 209, 250, 229;
+  --accent-grad-to: 110, 231, 183;
+}
+:root[data-accent="ivory"] {
+  --accent: 254, 243, 199;
+  --accent-light: 146, 114, 10;
+  --accent-lighter: 255, 251, 235;
+  --accent-grad-to: 253, 224, 71;
+}
+:root[data-accent="pearl"] {
+  --accent: 209, 213, 219;
+  --accent-light: 75, 85, 99;
+  --accent-lighter: 229, 231, 235;
+  --accent-grad-to: 156, 163, 175;
+}
+:root[data-accent="beige"] {
+  --accent: 245, 222, 179;
+  --accent-light: 146, 114, 10;
+  --accent-lighter: 254, 243, 199;
+  --accent-grad-to: 251, 191, 36;
+}
 
 /* Accent utility classes */
 .bg-accent { background: rgb(var(--accent)); }
@@ -104,6 +176,18 @@ body {
   color: var(--text-primary);
   overflow-x: hidden;
   transition: background 0.3s, color 0.3s;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
 }
 
 @layer components {
